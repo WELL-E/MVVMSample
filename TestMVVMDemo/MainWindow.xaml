@@ -1,0 +1,43 @@
+﻿<Window x:Class="TestMVVMDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="Resource.xaml"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0">
+            <Border BorderThickness="1" BorderBrush="BlueViolet" Padding="5">
+                <StackPanel >
+                    <Button Height="20" Content="ShowFirstView" Command="{Binding Path=ShowFirstViewCmd}"/>
+                    <Button Height="20" Content="ShowSecondView" Command="{Binding Path=ShowSecondViewCmd}"/>
+                </StackPanel>
+            </Border>
+
+            <Border BorderThickness="1" BorderBrush="BlueViolet" Padding="5">
+                <StackPanel >
+                    <Button Height="20" Content="CreateFirstView" Command="{Binding Path=CreateFirstViewCmd}"/>
+                    <Button Height="20" Content="CreateSecondView" Command="{Binding Path=CreateSecondViewCmd}"/>
+                    <Button Height="20" Content="PreviousView" Command="{Binding Path=ShowPreviousViewCmd}"/>
+                    <Button Height="20" Content="NextView" Command="{Binding Path=ShowNextViewCmd}"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <Border Grid.Column="1" BorderThickness="1" BorderBrush="Blue" Margin="5,0,0,0">
+            <!--single view-->
+            <ContentPresenter Content="{Binding Path=WorkspaceSingle}"/>
+
+            <!--multi view-->
+            <!--<ContentPresenter Content="{Binding Path=WorkspaceMulti}" ContentTemplate="{StaticResource WorkspacesTemplate}"/>-->
+        </Border>
+    </Grid>
+
+</Window>

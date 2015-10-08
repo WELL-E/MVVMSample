@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:TestMVVMDemo.ViewModels"
+                    xmlns:vw="clr-namespace:TestMVVMDemo.Views">
+
+    <DataTemplate DataType="{x:Type vm:FirstViewModel}">
+        <vw:FirstView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SecondViewModel}">
+        <vw:SecondView/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TabItemTemplate">
+        <DockPanel Width="Auto">
+            <ContentPresenter Content="{Binding Path=DisplayName}" VerticalAlignment="Center"/>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="WorkspacesTemplate">
+        <TabControl IsSynchronizedWithCurrentItem="True"
+                    Background="Transparent" 
+                    ItemsSource="{Binding}" 
+                    ItemTemplate="{StaticResource TabItemTemplate}"/>
+    </DataTemplate>
+    
+</ResourceDictionary>
